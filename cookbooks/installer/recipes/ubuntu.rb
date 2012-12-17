@@ -1,1 +1,0 @@
-puts "ok, here goes an ubuntu installer"

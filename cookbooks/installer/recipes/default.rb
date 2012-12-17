@@ -1,4 +1,3 @@
-
 # 0- Validate
 supported_platforms = ['centos']
 if not supported_platforms.include? node[:platform]
@@ -7,17 +6,16 @@ if not supported_platforms.include? node[:platform]
 end
 
 # 1- Prep any temp or staging directories
-include_recipe "prepare::#{node[:platform]}"
+include_recipe "#{node[:platform]}::prepare"
 
 # 2- Install dependencies/libraries into machine
-include_recipe "installer::#{node[:platform]}"
+include_recipe "#{node[:platform]}::installer"
 
 # 3- Build & package the project
-include_recipe "builder::#{node[:platform]}"
+include_recipe "#{node[:platform]}::builder"
 
 # 4- Upload the build package
-include_recipe "uploader::#{node[:platform]}"
+include_recipe "#{node[:platform]}::uploader"
 
 # 5 - Cleanup
-include_recipe "cleanup::#{node[:platform]}"
-
+include_recipe "#{node[:platform]}::cleanup"
